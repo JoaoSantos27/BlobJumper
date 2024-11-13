@@ -56,6 +56,16 @@ if (obj_player.y < next_platform_y) {
 		// Spawn platform at current height
 		instance_create_layer(platform_x, next_platform_y - platform_y_spacing, "Instances", new_platform);
 		platforms_generated += 1;
+		var random_food = irandom(1000);
+
+		if (random_food < 10) { 
+		    instance_create_layer(platform_x, next_platform_y - platform_y_spacing - 150, "Instances", obj_food_walnut);
+		} else if (random_food < 20) { 
+		    instance_create_layer(platform_x, next_platform_y - platform_y_spacing - 150, "Instances", obj_food_carrot);
+		} else if (random_food < 30) { 
+		    instance_create_layer(platform_x, next_platform_y - platform_y_spacing - 150, "Instances", obj_food_banana);
+		}
+
 	}
 	}
 	// Increase height after reaching the desired number of platforms

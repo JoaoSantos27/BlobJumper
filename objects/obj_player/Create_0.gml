@@ -1,7 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
-// Set the game speed to 60 FPS
 score = 0;
-coins_collected = 0;   // Total coins collected
+coins_collected = 0;   
+fruits_collected = 0;
 highest_point = y;
-game_set_speed(60, 60); // The first argument is the target FPS, the second is the update speed
+game_set_speed(60, 60); 
+
+jump_boost = false;          
+coin_magnet = false;         
+fall_protection = false;      
+
+jump_boost_timer = 0;         
+coin_magnet_timer = 0;       
+fall_protection_active = false; 

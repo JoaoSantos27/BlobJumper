@@ -36,31 +36,60 @@ place_meeting(x, y+1, obj_floor))) {
 } else if (vspeed > 0) {
 	vspeed = 0; 
     vspeed = -16;  
+	if (jump_boost) {
+     vspeed = 0; 
+     vspeed = -25; 
+	 jump_boost_timer -= 1;
+	}
+    if (jump_boost_timer <= 0) {
+        jump_boost = false;
+        vspeed = 0; 
+		vspeed = -16;  
+    }
 	//if (y <= obj_platform.y - 1) { 
 	//vspeed = 0;  
     //vspeed = -30; 
 	//} else {
 	//	vspeed = 35;  
 	//}
-}
+} 
 
 // Vertical movement (falling)
 y += vspeed;
+
+if (coin_magnet) {
+    with (obj_coin) {
+        if (point_distance(x, y, obj_player.x, obj_player.y) < 1000) {
+            x += (obj_player.x - x) * 0.1;
+            y += (obj_player.y - y) * 0.1;
+        }
+    }
+
+    coin_magnet_timer -= 1;
+    if (coin_magnet_timer <= 0) {
+        coin_magnet = false;
+    }
+}
+
+var _game_over_threshold = highest_point + 3000;
+
+if (fall_protection && fall_protection_active) {
+    if (y > _game_over_threshold) { 
+        y = highest_point; 
+        fall_protection_active = false; 
+    }
+}
 
 // Update the highest point reached by the player
 if (y < highest_point) {
     highest_point = y;
 }
 
-// Set a threshold for game over
-var _game_over_threshold = highest_point + 3000;
-
-// Trigger game over if player falls below the threshold
 if (y > _game_over_threshold) {
-    show_message("Game Over!");  // Display a simple game over message
-    game_restart();  // Restart the game or load a game-over screen
+    show_message("Game Over!");  
+    game_restart();  
 }
 
 if(y < 0) {
-	score = -highest_point + coins_collected*1000;  
+	score = -highest_point + coins_collected*1000 + fruits_collected*5000;  
 } 
