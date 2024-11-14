@@ -1,6 +1,6 @@
 /// @description Jump
 // You can write your code in this editor
-var _screen_width = room_width;  // Detect the width of the room dynamically
+var _screen_width = room_width; 
 
 var _cam = view_camera[0];
 

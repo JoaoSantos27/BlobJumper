@@ -4,13 +4,13 @@
 
 if (obj_player.y < next_platform_y) {
 
-    // Spawn a new platform above the player
+   
 	while (platforms_generated < platforms_per_height) {
-		// Set up a variable to determine if the position is valid
+	
     var position_is_valid = false;
-    var attempt_count = 0; // Limit the number of attempts to find a valid spot
+    var attempt_count = 0; 
 	var platform_x;
-	var platform_type = irandom(2); // Randomly choose a platform type (0, 1, or 2)
+	var platform_type = irandom(2); 
 	var new_platform;
 
 	if (platform_type == 0) {
@@ -22,38 +22,34 @@ if (obj_player.y < next_platform_y) {
 	}
 
     while (!position_is_valid && attempt_count < 10) {
-        // Generate a random x-coordinate for the platform
         platform_x = random(room_width);
 
-        // Assume the position is valid initially
         position_is_valid = true;
 
-        // Check all existing platforms to see if any are too close
         with (obj_platform) {
             if (y == other.next_platform_y - other.platform_y_spacing && 
 			point_distance(platform_x, y, x, y) < other.min_platform_distance) {
-                position_is_valid = false; // Mark position as invalid if too close
-                break; // Exit the loop to try a new position
+                position_is_valid = false; 
+                break; 
             }
         }
 		with (obj_platform_breakable) {
             if (y == other.next_platform_y - other.platform_y_spacing && 
 			point_distance(platform_x, y, x, y) < other.min_platform_distance) {
-                position_is_valid = false; // Mark position as invalid if too close
-                break; // Exit the loop to try a new position
+                position_is_valid = false; 
+                break; 
             }
         }
 		with (obj_platform_moving) {
             if (y == other.next_platform_y - other.platform_y_spacing && 
 			point_distance(platform_x, y, x, y) < other.min_platform_distance) {
-                position_is_valid = false; // Mark position as invalid if too close
-                break; // Exit the loop to try a new position
+                position_is_valid = false; 
+                break; 
             }
         }
 
-        attempt_count += 1; // Increment attempt count to avoid infinite loops
+        attempt_count += 1; 
     } if (position_is_valid) {
-		// Spawn platform at current height
 		instance_create_layer(platform_x, next_platform_y - platform_y_spacing, "Instances", new_platform);
 		platforms_generated += 1;
 		var random_food = irandom(1000);
@@ -68,26 +64,24 @@ if (obj_player.y < next_platform_y) {
 
 	}
 	}
-	// Increase height after reaching the desired number of platforms
-	platforms_generated = 0; // Reset the counter
-    next_platform_y -= platform_y_spacing;  // Update the position for the next platform
+	platforms_generated = 0; 
+    next_platform_y -= platform_y_spacing;
 }
 
-// Remove platforms below the camera view to optimize performance
 var _camera_bottom_y = camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0])+2000;
 
 with (obj_platform) {
     if (y > _camera_bottom_y) {
-        instance_destroy();  // Delete platform if it's below the visible area
+        instance_destroy();  
     }
 }
 with (obj_platform_breakable) {
     if (y > _camera_bottom_y) {
-        instance_destroy();  // Delete platform if it's below the visible area
+        instance_destroy();  
     }
 }
 with (obj_platform_moving) {
     if (y > _camera_bottom_y) {
-        instance_destroy();  // Delete platform if it's below the visible area
+        instance_destroy(); 
     }
 }
