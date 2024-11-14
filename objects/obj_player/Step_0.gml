@@ -32,19 +32,19 @@ if (!(place_meeting(x, y+1, obj_platform) ||
 place_meeting(x, y+1, obj_platform_breakable) ||
 place_meeting(x, y+1, obj_platform_moving) ||
 place_meeting(x, y+1, obj_floor))) {
-    vspeed += 0.4;  
+    vspeed += 0.2;  
 } else if (vspeed > 0) {
 	vspeed = 0; 
-    vspeed = -16;  
+    vspeed = -11;  
 	if (jump_boost) {
      vspeed = 0; 
-     vspeed = -25; 
+     vspeed = -17; 
 	 jump_boost_timer -= 1;
 	}
     if (jump_boost_timer <= 0) {
         jump_boost = false;
         vspeed = 0; 
-		vspeed = -16;  
+		vspeed = -11;  
     }
 	//if (y <= obj_platform.y - 1) { 
 	//vspeed = 0;  

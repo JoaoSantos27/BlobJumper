@@ -13,3 +13,10 @@ fall_protection = false;
 jump_boost_timer = 0;         
 coin_magnet_timer = 0;       
 fall_protection_active = false; 
+
+
+base_width = room_width;
+base_height = room_height;
+width = base_width;
+height = base_height;
+

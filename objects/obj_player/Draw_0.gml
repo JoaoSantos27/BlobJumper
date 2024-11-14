@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-
+Script1(base_width, base_height, width, height, true);
 draw_sprite(sprite_index, image_index, x, y);
 
 var camera_y = camera_get_view_y(view_camera[0]);
