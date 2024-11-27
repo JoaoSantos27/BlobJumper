@@ -1,3 +1,7 @@
+if (global.is_paused) {
+    exit; // Skip further execution if the game is paused
+}
+
 /// @description Insert description here
 // You can write your code in this editor
 // Check if player is high enough to spawn a new platform
@@ -22,8 +26,8 @@ if (obj_player.y < next_platform_y) {
 	}
 
     while (!position_is_valid && attempt_count < 10) {
-        platform_x = random(room_width);
-
+        platform_x = random(room_width-128);
+		var plat_y = irandom_range(-150,150)
         position_is_valid = true;
 
         with (obj_platform) {
@@ -54,11 +58,11 @@ if (obj_player.y < next_platform_y) {
 		platforms_generated += 1;
 		var random_food = irandom(1000);
 
-		if (random_food < 10) { 
-		    instance_create_layer(platform_x, next_platform_y - platform_y_spacing - 150, "Instances", obj_food_walnut);
+		if (random_food < 8) { 
+		    instance_create_layer(platform_x, next_platform_y - platform_y_spacing - 150 , "Instances", obj_food_walnut);
 		} else if (random_food < 20) { 
 		    instance_create_layer(platform_x, next_platform_y - platform_y_spacing - 150, "Instances", obj_food_carrot);
-		} else if (random_food < 30) { 
+		} else if (random_food < 50) { 
 		    instance_create_layer(platform_x, next_platform_y - platform_y_spacing - 150, "Instances", obj_food_banana);
 		}
 

@@ -9,8 +9,8 @@
   "name":"obj_coinController",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"controllers",
+    "path":"folders/Objects/controllers.yy",
   },
   "parentObjectId":null,
   "persistent":false,

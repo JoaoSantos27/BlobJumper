@@ -5,6 +5,7 @@ coins_collected = 0;
 fruits_collected = 0;
 highest_point = y;
 game_set_speed(60, 60); 
+start_moving = false;
 
 jump_boost = false;          
 coin_magnet = false;         
