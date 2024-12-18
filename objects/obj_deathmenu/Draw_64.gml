@@ -10,3 +10,4 @@ draw_text(room_width / 2, 400, "Score: " + string(global.final_score));
 
 // Draw the coins collected
 draw_text(room_width / 2, 500, "Coins Collected: " + string(global.final_coins));
+draw_flush()

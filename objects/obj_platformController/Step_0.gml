@@ -56,16 +56,16 @@ if (obj_player.y < next_platform_y) {
     } if (position_is_valid) {
 		instance_create_layer(platform_x, next_platform_y - platform_y_spacing, "Instances", new_platform);
 		platforms_generated += 1;
-		var random_food = irandom(1000);
-
-		if (random_food < 8) { 
+		var random_food = irandom(10000);
+		if (random_food == 3469 || keyboard_check(vk_alt)) {
+			instance_create_layer(platform_x, next_platform_y - platform_y_spacing - 150, "Instances", obj_food_star);
+		} else if (random_food < 80) { 
 		    instance_create_layer(platform_x, next_platform_y - platform_y_spacing - 150 , "Instances", obj_food_walnut);
-		} else if (random_food < 20) { 
+		} else if (random_food < 200) { 
 		    instance_create_layer(platform_x, next_platform_y - platform_y_spacing - 150, "Instances", obj_food_carrot);
-		} else if (random_food < 50) { 
+		} else if (random_food < 500) { 
 		    instance_create_layer(platform_x, next_platform_y - platform_y_spacing - 150, "Instances", obj_food_banana);
 		}
-
 	}
 	}
 	platforms_generated = 0; 

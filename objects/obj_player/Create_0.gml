@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-score = 0;
+score_points = 0;
 coins_collected = 0;   
 fruits_collected = 0;
 highest_point = y;

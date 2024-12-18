@@ -13,10 +13,12 @@ if (keyboard_check_pressed(vk_escape)) { // Toggle pause on pressing Escape
     if (global.is_paused) {
 		saved_speed = vspeed;
 		vspeed = 0;
+		image_speed = 0;
         instance_create_layer(0, 0, "Instances", obj_pause_screen); // Create the pause screen
     } else {
         with (obj_pause_screen) instance_destroy(); // Remove pause screen
 		vspeed = saved_speed;
+		image_speed = 1;
     }
 }
 
@@ -103,19 +105,19 @@ if (fall_protection && fall_protection_active) {
 
 // Update the highest point reached by the player
 if (y < highest_point) {
-    highest_point = y;
+    highest_point = y;	
 }
 
 if (y > _game_over_threshold) {
-    global.final_score = score;
+    global.final_score = score_points;
 	global.final_coins = coins_collected;
 	global.total_coins += coins_collected; // Add coins to the player's total
-	show_debug_message("Adding score: " + string(global.final_score));
 	ds_priority_add(global.scores, global.final_score, global.final_score)
-	show_debug_message("Leaderboard size: " + string(ds_priority_size(global.scores)));
+	global.tutorial_skin = false;
+	save();
 	room_goto(rm_death_screen); // Go to the death screen
 }
 
 if(y < 0) {
-	score = -highest_point + coins_collected*1000 + fruits_collected*5000;  
+	score_points = int64((-highest_point + coins_collected*1000 + fruits_collected*5000)/100);  
 } 

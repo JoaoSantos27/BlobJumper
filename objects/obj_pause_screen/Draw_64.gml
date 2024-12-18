@@ -18,3 +18,4 @@ draw_text(room_width / 2, room_height / 3, "Paused");
 // Draw menu options
 draw_text(room_width / 2, room_height / 2, "Press ESC to Resume");
 draw_text(room_width / 2, room_height / 2 + 50, "Press Q to Quit");
+draw_flush()

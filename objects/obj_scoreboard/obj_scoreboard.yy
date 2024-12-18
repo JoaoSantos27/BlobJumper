@@ -8,8 +8,8 @@
   "name":"obj_scoreboard",
   "overriddenProperties":[],
   "parent":{
-    "name":"buttons",
-    "path":"folders/Objects/buttons.yy",
+    "name":"controllers",
+    "path":"folders/Objects/controllers.yy",
   },
   "parentObjectId":null,
   "persistent":false,
