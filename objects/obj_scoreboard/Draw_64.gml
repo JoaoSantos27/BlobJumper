@@ -16,11 +16,11 @@ var y_offset = 300;
 //    count += 1;
 //    if (count >= 10) break; // Display top 10 scores
 //}
-var scores = ds_priority_create();
-ds_priority_copy(scores, global.scores);
+var scores = ds_list_create();
+ds_list_copy(scores, global.scores);
 
-for (var i = 0; i < min(10, ds_priority_size(scores)); i++) { // Show top 10
-    var s = ds_priority_delete_max(scores);
+for (var i = 0; i < min(10, ds_list_size(scores)); i++) { // Show top 10
+    var s = ds_list_find_value(scores, i);
     draw_text(100, y_offset + (i * 100), string(i + 1) + ". " + string(s) + " points");
 }
 draw_flush()

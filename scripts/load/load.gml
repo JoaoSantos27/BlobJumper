@@ -10,10 +10,7 @@ if(file_exists("game_settings")){
 	global.tutorial_skin = ds_map_find_value(save_data, "Tutorial");
 	global.unlocked_skins = ds_map_find_value(save_data, "UnlockedSkins");
 	global.total_coins = ds_map_find_value(save_data, "Coins");
-	global.scores = ds_priority_create();
-	show_debug_message(ds_map_find_value(save_data, "Scores"));
-	ds_priority_read(global.scores, ds_map_find_value(save_data, "Scores"));
-	show_debug_message(ds_priority_find_max(global.scores));
+	global.scores = ds_map_find_value(save_data, "Scores");
 	file_text_close(game_settings);
 }
 }

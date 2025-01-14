@@ -112,7 +112,8 @@ if (y > _game_over_threshold) {
     global.final_score = score_points;
 	global.final_coins = coins_collected;
 	global.total_coins += coins_collected; // Add coins to the player's total
-	ds_priority_add(global.scores, global.final_score, global.final_score)
+	ds_list_add(global.scores, global.final_score);
+	ds_list_sort(global.scores, false);
 	global.tutorial_skin = false;
 	save();
 	room_goto(rm_death_screen); // Go to the death screen

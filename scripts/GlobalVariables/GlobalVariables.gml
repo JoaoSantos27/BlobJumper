@@ -22,7 +22,7 @@ function GlobalVariables(){
 		global.total_coins = 0; // For coins stored across playthroughs
 	}
 	if(global.scores == undefined){	
-		global.scores = ds_priority_create();
+		global.scores = ds_list_create();
 	}
 	save();
 }
