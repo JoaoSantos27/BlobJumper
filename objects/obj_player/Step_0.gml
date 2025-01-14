@@ -50,8 +50,7 @@ if (x > _screen_width) {
 // Apply gravity
 if(start_moving) {
 
-if (!(place_meeting(x, y+1, obj_platform) || 
-place_meeting(x, y+1, obj_platform_breakable) ||
+if (!(place_meeting(x, y+1, obj_platform) ||
 place_meeting(x, y+1, obj_platform_moving) ||
 place_meeting(x, y+1, obj_floor))) {
     vspeed += 0.2;  
@@ -68,13 +67,7 @@ place_meeting(x, y+1, obj_floor))) {
         vspeed = 0; 
 		vspeed = -11;  
     }
-	//if (y <= obj_platform.y - 1) { 
-	//vspeed = 0;  
-    //vspeed = -30; 
-	//} else {
-	//	vspeed = 35;  
-	//}
- } 
+}
 }
 
 // Vertical movement (falling)

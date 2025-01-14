@@ -8,6 +8,7 @@ if (global.is_paused) {
 
 if (obj_player.y < next_platform_y) {
 
+	var platforms_per_height = irandom_range(1,4); 
    
 	while (platforms_generated < platforms_per_height) {
 	
